@@ -12,7 +12,9 @@ export default function Navbar() {
                     <Link className={`${darkMode ? 'text-gray-100' : 'text-gray-500'} font-medium text-base`} to="/">Home</Link>
                     <Link className={`${darkMode ? 'text-gray-100' : 'text-gray-500'} font-medium text-base`} to="about">About</Link>
                 </div>
-                <h3 className={`${darkMode ? 'text-purple-500' : 'text-purple-800'} w-4/12 font-medium text-xl`}>AuthenticationToggleTheme</h3>
+                <div className="w-4/12 text-center">
+                    <h3 className={`${darkMode ? 'text-purple-500' : 'text-purple-800'} font-medium text-xl`}>AuthenticationToggleTheme</h3>
+                </div>
                 <div className="w-4/12 flex justify-end items-center gap-x-5">
                     <Link className={`${darkMode ? 'text-gray-100' : 'text-gray-500'} font-medium text-base`} to="login">Login</Link>
                 </div>
