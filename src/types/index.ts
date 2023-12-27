@@ -5,5 +5,5 @@ export interface IRouterError {
 
 export interface IThemes {
   darkMode: boolean;
-  toggleTheme: () => void;
+  toggleTheme: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

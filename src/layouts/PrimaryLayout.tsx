@@ -1,24 +1,16 @@
-import { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { IThemes } from '../types/index'
-
-const ThemeContext = createContext<IThemes | null>(null)
+import { ThemeProvider } from "../contexts/ThemeContext";
 
 export default function PrimaryLayout() {
-    const [darkMode, setDarkMode] = useState(false)
 
     return (
-        <ThemeContext.Provider
-            value={{
-                darkMode,
-                toggleTheme: () => setDarkMode(!darkMode),
-            }}
+        <ThemeProvider
         >
             <Navbar />
             <Outlet />
             <Footer />
-        </ThemeContext.Provider>
+        </ThemeProvider>
     )
 }
