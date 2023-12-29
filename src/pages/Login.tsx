@@ -1,12 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext"
 import { useAuth } from "../contexts/AuthContext";
+import { useEffect } from "react";
 
 export default function Login() {
 
     const { darkMode } = useTheme();
-    const { login } = useAuth()
+    const { isAuthenticated, login } = useAuth()
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) return navigate('/dashboard');
+    }, [isAuthenticated, navigate])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
