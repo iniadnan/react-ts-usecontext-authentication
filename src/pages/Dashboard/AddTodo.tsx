@@ -21,7 +21,9 @@ export default function DashboardIndex() {
         }
 
         updateValueTD([...valueTD, todo]);
-        return navigate('/dashboard');
+        setTimeout(() => {
+            navigate('/dashboard')
+        }, 1000);
     }
 
     return (
