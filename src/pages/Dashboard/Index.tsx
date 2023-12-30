@@ -5,8 +5,13 @@ import { ITodos } from "../../types";
 import DashboardCard from "../../components/DashboardCard";
 
 export default function DashboardAddTodo() {
-    const { value: todos } = useLocalStorage<ITodos[]>('todo', []);
+    const { value: todos, updateValue: updateTodos } = useLocalStorage<ITodos[]>('todo', []);
     const { darkMode } = useTheme();
+
+    const onDeleteTodo = (id: string) => {
+        updateTodos(todos.filter(todo => id !== todo.id))
+    }
+
     return (
         <main className={`${darkMode ? 'bg-slate-900' : 'bg-slate-50'} w-full`}>
             <div className="container mx-auto px-5 md:px-0 py-20">
@@ -15,7 +20,7 @@ export default function DashboardAddTodo() {
                 </div>
                 <div className="w-2/3 mx-auto flex flex-wrap gap-y-4">
                     {
-                        todos.map((todo) => <DashboardCard key={todo.id} description={todo.description} title={todo.title} date={todo.date} />)
+                        todos.map((todo) => <DashboardCard key={todo.id} deleteTodo={() => onDeleteTodo(todo.id)} description={todo.description} title={todo.title} date={todo.date} />)
                     }
                 </div>
             </div>
