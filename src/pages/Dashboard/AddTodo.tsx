@@ -3,11 +3,23 @@ import { useTheme } from "../../contexts/ThemeContext"
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { ITodos } from "../../types";
 import generateRandomString from "../../helpers/RandomString";
+import { useEffect } from "react";
 
 export default function DashboardIndex() {
     const { darkMode } = useTheme();
     const { value: valueTD, updateValue: updateValueTD } = useLocalStorage<ITodos[]>('todo', []);
     const navigate = useNavigate();
+    let totalValueTD = 0;
+
+    useEffect(() => {
+        totalValueTD = valueTD.length;
+    }, [])
+
+    useEffect(() => {
+        if (totalValueTD != valueTD.length) {
+            navigate('/dashboard')
+        }
+    }, [navigate, totalValueTD, valueTD.length])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -21,9 +33,6 @@ export default function DashboardIndex() {
         }
 
         updateValueTD([...valueTD, todo]);
-        setTimeout(() => {
-            navigate('/dashboard')
-        }, 1000);
     }
 
     return (
