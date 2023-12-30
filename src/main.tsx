@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
 import DashboardIndex from './pages/Dashboard/Index';
+import DashboardAddTodo from './pages/Dashboard/AddTodo';
 import PrivateRoute from './components/PrivateRoute';
 
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <DashboardIndex />,
+          },
+          {
+            path: "/dashboard/add-todo",
+            element: <DashboardAddTodo />,
           },
         ]
       }
