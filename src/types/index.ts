@@ -10,7 +10,7 @@ export interface IThemes {
 
 export interface AuthContextType {
   isAuthenticated: boolean;
-  login: () => void;
+  login: (username: string, password: string) => void;
   logout: () => void;
 }
 

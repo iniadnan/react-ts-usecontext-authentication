@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import { AuthContextType } from "../types";
 
@@ -7,13 +7,24 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const login = () => {
-        // Implement your login logic
+    useEffect(() => {
+        const storedCredentialsString = localStorage.getItem('userData');
+        if (storedCredentialsString) {
+            setIsAuthenticated(true)
+        }
+    }, [])
+
+    const login = (username: string, password: string) => {
+        const userData = {
+            username: username,
+            password: password
+        }
+        localStorage.setItem('userData', JSON.stringify(userData));
         setIsAuthenticated(true);
     };
 
     const logout = () => {
-        // Implement your logout logic
+        localStorage.removeItem('userData');
         setIsAuthenticated(false);
     };
 

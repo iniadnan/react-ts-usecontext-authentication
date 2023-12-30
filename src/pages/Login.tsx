@@ -15,7 +15,10 @@ export default function Login() {
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        login()
+        const formData = new FormData(event.currentTarget);
+        const username = formData.get('username') as string;
+        const password = formData.get('password') as string;
+        login(username, password)
         return navigate("/dashboard");
     }
 
@@ -32,11 +35,11 @@ export default function Login() {
                         </div>
                         <div className="w-full mb-5">
                             <label htmlFor="username" className="w-full block font-medium text-base text-gray-800 mb-1">Username</label>
-                            <input id="username" type="text" placeholder="Username" className="w-full py-2 px-3 bg-slate-200" />
+                            <input id="username" type="text" name="username" placeholder="Username" className="w-full py-2 px-3 bg-slate-200" />
                         </div>
                         <div className="w-full mb-8">
                             <label htmlFor="password" className="w-full block font-medium text-base text-gray-800 mb-1">Password</label>
-                            <input id="password" type="password" placeholder="Password" className="w-full py-2 px-3 bg-slate-200" />
+                            <input id="password" type="password" name="password" placeholder="Password" className="w-full py-2 px-3 bg-slate-200" />
                         </div>
                         <div>
                             <button className="w-full py-3 bg-purple-800 text-gray-50 font-medium text-base" type="submit">Login</button>
