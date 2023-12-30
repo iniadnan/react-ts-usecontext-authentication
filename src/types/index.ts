@@ -25,3 +25,11 @@ export interface PrivateRouteProps {
   element: React.ReactNode;
   path: string;
 }
+
+export interface ITodos {
+  id: string;
+  title: string;
+  description: string;
+  important: string;
+  date: string;
+}
