@@ -10,7 +10,6 @@ import PrimaryLayout from './layouts/PrimaryLayout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
-import Register from './pages/Register';
 import DashboardIndex from './pages/Dashboard/Index';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -31,10 +30,6 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />
-      },
-      {
-        path: "register",
-        element: <Register />
       },
       {
         element: <PrivateRoute />,

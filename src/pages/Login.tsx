@@ -22,7 +22,7 @@ export default function Login() {
     return (
         <main className={`${darkMode ? 'bg-slate-900' : 'bg-slate-50'} w-full`}>
             <div className="container mx-auto px-5 md:px-0 pt-40 pb-40">
-                <form className="w-[750px] flex items-start mx-auto bg-slate-100 p-5 rounded" onSubmit={onSubmit}>
+                <form className={`w-[750px] flex items-start mx-auto bg-slate-100 p-5 rounded`} onSubmit={onSubmit}>
                     <div className="w-5/12">
                         <img className="w-full h-[300px] object-cover" src="/images/login-image.jpg" alt="Login" height="100" width="100" />
                     </div>
